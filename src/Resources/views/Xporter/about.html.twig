@@ -1,0 +1,30 @@
+{% extends '@SyliusAdmin/layout.html.twig' %}
+
+{% block title %}{{ 'sylius_product_design_configurator.ui.about'|trans }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block content %}
+    <h1>{{ 'sylius_xporter_plugin.ui.plugin.name'|trans }}</h1>
+    <p>{{ 'sylius_xporter_plugin.ui.plugin.about'|trans|raw }}</p>
+
+{#    <hr/>#}
+{#    <h1>Webnou</h1>#}
+{#    {{ sonata_block_render({ 'type': 'sonata.block.service.rss' }, {#}
+{#        'url': 'http://www.webnou.ro/feed'#}
+{#    }) }}#}
+{#    <br>#}
+
+    <hr/><br>
+
+{#    {{ sonata_block_render({ 'type': 'sonata.block.service.template' }, {#}
+{#        'template': '@SyliusXporterPlugin/Xporter/Block/aquis_block.html'#}
+{#    }) }}#}
+
+    {{ sonata_block_render({ 'type': 'sonata.block.service.template' }, {
+        'template': '@SyliusXporterPlugin/Xporter/Block/content.twig.html'
+    }) }}
+
+{% endblock %}

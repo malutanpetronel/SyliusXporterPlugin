@@ -1,0 +1,55 @@
+# @copyright Aquis Grana impex srl (http://www.webnou.ro/)
+# @author    Petronel Malutan <malutanpetronel@gmail.com>
+parameters:
+    locale: en_US
+    aquis_xporter_directory: aquis_xporter
+    fs_fixtures_local: '%kernel.root_dir%/../web/public/fixtures'
+
+services:
+    ### @TODO: REMOVE_ME_WHEN_PUBLISH: add custom command
+    aquis_xporter_plugin.command.xport:
+        class: Aquis\XporterPlugin\Command\XportCommand
+#        arguments:
+#            - '@doctrine.orm.entity_manager'
+#            - '@DocGeneratorBundle\Registry\GeneratorRegistry'
+        tags:
+            - { name: console.command }
+
+    ### @TODO: REMOVE_ME_WHEN_PUBLISH: customise the left admin menu
+    aquis_sylius_aquis_xporter_plugin.listener.admin.menu_builder:
+        class: Aquis\XporterPlugin\Menu\AdminMenuListener
+        tags:
+            - { name: kernel.event_listener, event: sylius.menu.admin.main, method: addAdminMenuItems }
+        arguments: ['@sylius.theme.translation.theme_aware_translator.inner']
+
+    ### @TODO: REMOVE_ME_WHEN_PUBLISH: add javascript to display selected files
+    aquis_sylius_aquis_xporter_plugin.block_event_listener.admin.layout.javascripts:
+        class: Sylius\Bundle\UiBundle\Block\BlockEventListener
+        arguments:
+            - '@@SyliusXporterPlugin/Admin/_javascripts.html.twig'
+        tags:
+            - { name: kernel.event_listener, event: sonata.block.event.sylius.admin.layout.javascripts, method: onBlockEvent }
+
+    Aquis\XporterPlugin\Controller\XporterController:
+        public: true
+        arguments:
+            $templatingEngine: '@templating'
+            $tokenStorage: '@security.token_storage'
+        tags: ['controller.service_arguments']
+
+    ### dump fixtures
+    Aquis\XporterPlugin\Service\FixtureDump\EntityReader:
+        arguments:
+            - '@doctrine.orm.entity_manager'
+
+    Aquis\XporterPlugin\Service\FixtureDump\FixturesWriter:
+        arguments:
+            - '@filesystem'
+            - '%fs_fixtures_local%'
+
+    Aquis\XporterPlugin\Command\DoctrineFixtureDump:
+        arguments:
+            - '@Aquis\XporterPlugin\Service\FixtureDump\EntityReader'
+            - '@Aquis\XporterPlugin\Service\FixtureDump\FixturesWriter'
+        tags:
+            - { name: console.command }

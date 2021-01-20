@@ -1,0 +1,22 @@
+sylius_xporter_plugin:
+    ui:
+        plugin:
+            name: 'Aquis Xporter'
+            about: >
+                <h4>Aquis - Custom Software Development</h4>
+                Aquis Xporter - DB data exporter in Yaml format which is much easy to read your data.
+                <pre>
+                  <code style="background-color: #eee; border: 1px solid #999; display: block; overflow: auto;">
+                    bin/console  aquis:fixture:dump App\\Entity\\Product\\Product --ids=1,3 --debug=true
+                  </code>
+                </pre>
+                or
+                <pre>
+                  <code style="background-color: #eee; border: 1px solid #999; display: block; overflow: auto;">
+                    bin/console  aquis:fixture:dump App\\Entity\\Currency\\Currency --ids=10
+                  </code>
+                </pre>
+            key: AQUIS
+            owner_name: AQUIS plugins
+            product:
+

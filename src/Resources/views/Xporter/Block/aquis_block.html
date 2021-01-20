@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<body>
+<head>
+    <link rel="stylesheet" href="{{ asset('bundles/syliusxporterplugin/css/default.css') }}" type="text/css" media="all"/>
+    <script src="{{ asset('bundles/syliusxporterplugin/js/jquery-1.8.3.min.js') }}" type="text/javascript"></script>
+
+</head>
+
+<div class="container">
+    <div class="ui one column stackable grid">
+        <div class="column">
+            {{ sonata_block_render({ 'type': 'sonata.block.service.template' }, {
+            'template': '@SyliusXporterPlugin/Xporter/Block/menu.twig.html'
+            }) }}
+        </div>
+        <div class="column">
+            {{ sonata_block_render({ 'type': 'sonata.block.service.template' }, {
+            'template': '@SyliusXporterPlugin/Xporter/Block/navigation.twig.html'
+            }) }}
+        </div>
+        <div class="column">
+            {{ sonata_block_render({ 'type': 'sonata.block.service.template' }, {
+            'template': '@SyliusXporterPlugin/Xporter/Block/content.twig.html'
+            }) }}
+        </div>
+    </div>
+</div>
+<!-- monitoring:3e9fda56df2cdd3b039f189693ab7844fbb2d4f6 -->
+</body>
+</html>

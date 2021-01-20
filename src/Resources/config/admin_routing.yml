@@ -1,0 +1,12 @@
+# @copyright Aquis Grana impex srl (http://www.webnou.ro/)
+# @author    Petronel Malutan <malutanpetronel@gmail.com>
+
+# Define your own admin routes here
+aquis.xporter_plugin.about:
+    path: /admin/xporter/about
+    methods: [GET]
+    defaults:
+        _controller: SyliusXporterPlugin:Xporter:about
+        _sylius:
+            template: SyliusXporterPlugin:Xporter:about_aquis_xporter.html # Use a custom template.
+
