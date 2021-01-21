@@ -2,8 +2,8 @@
     "name":        "aquis/sylius-xporter-plugin",
     "license":     "AGPL-3.0-or-later",
     "type":        "sylius-plugin",
-    "description": "Plugin allowing to export fixtures in yml format.",
-    "keywords": ["sylius", "sylius-plugin", "sylius aquis plugin", "sylius petro plugin", "sylius-xporter-plugin"],
+    "description": "Plugin allowing to export and import back fixtures, in yml format.",
+    "keywords": ["sylius", "sylius-plugin", "yml", "fixtures", "dump database" ,"sylius aquis plugin", "sylius petro plugin", "sylius-xporter-plugin"],
     "homepage":    "http://www.webnou.ro",
     "authors": [
         {
