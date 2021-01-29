@@ -249,3 +249,8 @@ bin/console debug:container sylius.repository.product
 
 ##### Install dev
 COMPOSER=composer.dev.json composer install
+
+#### Buy me a beer if this plugin helps you
+![alt text](./QR.png)
+
+https://www.paypal.com/donate?hosted_button_id=KNKTPJXM8PEEQ
